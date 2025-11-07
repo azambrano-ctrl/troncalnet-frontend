@@ -3,3 +3,4 @@ solara
 requests
 pandas
 python-dotenv
+plotly
