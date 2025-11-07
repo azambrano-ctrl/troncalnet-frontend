@@ -1,13 +1,10 @@
 # app.py
 import solara
-import solara.express as px
+import solara.lab # <--- CORRECCIÓN 1: Cambiado de solara.express
 import requests
 import pandas as pd
 import os
 from dotenv import load_dotenv
-
-# --- Configuración de la Página (BLOQUE INCORRECTO ELIMINADO) ---
-# (La configuración ahora se maneja en solara.AppLayout)
 
 # Cargar la URL de la API desde el archivo .env
 load_dotenv()
@@ -86,7 +83,8 @@ def PageIncidencias():
     }
     df = pd.DataFrame(data)
     
-    px.dataframe(df, style={"height": "400px"})
+    # --- CORRECCIÓN 2: Usamos solara.DataFrame ---
+    solara.DataFrame(df)
 
 # ====================================
 # LAYOUT PRINCIPAL (La página entera)
@@ -123,9 +121,8 @@ def Layout():
 # CONTROLADOR DE RUTAS
 # ====================================
 
-# Definimos las "rutas" (URLs) de nuestra aplicación
 routes = [
-    solara.Route(path="/", component=PageIncidencias), # Página principal
+    solara.Route(path="/", component=PageIncidencias), 
     solara.Route(path="/clientes", component=PageClientes),
     solara.Route(path="/incidencias", component=PageIncidencias),
 ]
