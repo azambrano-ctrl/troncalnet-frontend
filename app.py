@@ -6,12 +6,8 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 
-# --- Configuración de la Página ---
-st.set_page_config(
-    page_title="CRM TroncalNet",
-    page_icon="📡",
-    layout="wide"
-)
+# --- Configuración de la Página (BLOQUE INCORRECTO ELIMINADO) ---
+# (La configuración ahora se maneja en solara.AppLayout)
 
 # Cargar la URL de la API desde el archivo .env
 load_dotenv()
@@ -124,11 +120,10 @@ def Layout():
             solara.Button("Cerrar Sesión", on_click=do_logout, icon_name="mdi-logout", text=True, style={"position": "absolute", "bottom": "10px", "left": "10px"})
 
 # ====================================
-# CONTROLADOR DE RUTAS (¡CORREGIDO!)
+# CONTROLADOR DE RUTAS
 # ====================================
 
 # Definimos las "rutas" (URLs) de nuestra aplicación
-# Se ha eliminado el argumento 'name' que causaba el error
 routes = [
     solara.Route(path="/", component=PageIncidencias), # Página principal
     solara.Route(path="/clientes", component=PageClientes),
